@@ -1,0 +1,39 @@
+<div class="edit-tpl">
+  <lm-tool-bar> </lm-tool-bar>
+  <div class="panel">
+    <div class="paper" style="width: 1100px;height: 1123px;padding: 15px;">
+      <div class="page-header"></div>
+      <div class="page-footer"></div>
+      <div class="header" style="height: 100px;">
+        <div class="area-mark">
+          表头区
+        </div>
+        <lm-dnd-element>
+          字段一
+        </lm-dnd-element>
+        <!-- <lm-dnd-element>
+          字段二
+        </lm-dnd-element>
+        <lm-dnd-element>
+          字段三
+        </lm-dnd-element> -->
+      </div>
+      <div class="body">
+        <div class="area-mark">
+          表体区
+        </div>
+      </div>
+      <div class="footer" style="height: 80px;">
+        <div class="area-mark">
+          表尾区
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toolpanel">
+    <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+      <nz-tab [nzTitle]="'基础配置'"> </nz-tab>
+      <nz-tab [nzTitle]="'数据源设置'"> </nz-tab>
+    </nz-tabset>
+  </div>
+</div>
