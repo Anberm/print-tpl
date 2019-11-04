@@ -1,5 +1,5 @@
-@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
-@import "../node_modules/ng-zorro-antd/resizable/style/entry.less";
+@import '../node_modules/ng-zorro-antd/ng-zorro-antd.less';
+@import '../node_modules/ng-zorro-antd/resizable/style/entry.less';
 // The prefix to use on all css classes from ant.
 @ant-prefix: ant;
 
@@ -40,9 +40,8 @@
 @body-background: #fff;
 // Base background color for most components
 @component-background: #fff;
-@font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
-'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-'Segoe UI Emoji', 'Segoe UI Symbol';
+@font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+  'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 @code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 @text-color: fade(@black, 65%);
 @text-color-secondary: fade(@black, 45%);
@@ -683,13 +682,67 @@
 @typography-title-font-weight: 600;
 
 /* You can add global styles to this file, and also import other style files */
+.edit-tpl {
+  .panel div {
+    border: 1px solid rgba(255, 255, 255, 0);
+  }
+  .panel .body:hover,
+  .panel .footer:hover,
+  .panel .header:hover,
+  .panel .page-header:hover,
+  .panel .page-footer:hover {
+    border: 1px solid #13c19f !important;
+  }
+}
 
-.nz-resizable-handle-bottomRight,
-.nz-resizable-handle-topRight,
-.nz-resizable-handle-bottomLeft,
-.nz-resizable-handle-topLeft {
-  width: 7px;
-  height: 7px;
-  background-color: #fff;
-  border: 1px solid #000;
+.lm-dnd-el {
+  &:hover,
+  &.lm-dnd-el-active {
+    border: 1px solid #13c19f !important;
+    .lm-dnd-el-del {
+      display: inline-block;
+    }
+  }
+  &:active,
+  &.lm-dnd-el-active {
+    .nz-resizable-handle-bottomRight,
+    .nz-resizable-handle-topRight,
+    .nz-resizable-handle-bottomLeft,
+    .nz-resizable-handle-topLeft,
+    .nz-resizable-handle-bottom,
+    .nz-resizable-handle-right,
+    .nz-resizable-handle-top,
+    .nz-resizable-handle-left {
+      width: 7px;
+      height: 7px;
+      background-color: #fff;
+      border: 1px solid #000;
+    }
+    .nz-resizable-handle-bottom,
+    .nz-resizable-handle-right,
+    .nz-resizable-handle-top,
+    .nz-resizable-handle-left {
+      border-radius: 3.5px;
+    }
+    .nz-resizable-handle-bottom,
+    .nz-resizable-handle-top {
+      left: calc(50% - 4px);
+    }
+    .nz-resizable-handle-right,
+    .nz-resizable-handle-left {
+      top: calc(50% - 4px);
+    }
+    .nz-resizable-handle-top {
+      top: -4px;
+    }
+    .nz-resizable-handle-bottom {
+      bottom: -4px;
+    }
+    .nz-resizable-handle-right {
+      right: -4px;
+    }
+    .nz-resizable-handle-left {
+      left: -4px;
+    }
+  }
 }

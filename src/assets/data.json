@@ -1,0 +1,181 @@
+{
+  "formHeaders": [
+    {
+      "title": "模板标题",
+      "selected": true,
+      "type": "input",
+      "value": "xx订货单"
+    },
+    {
+      "title": "地区",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "公司名称",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "客户名称",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "下单时间",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "联系电话",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "地区",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "地区",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    }
+  ],
+  "formBodys": [
+    {
+      "title": "商品编号",
+      "selected": false,
+      "disabled": false,
+      "order": 1
+    },
+    {
+      "title": "商品名称",
+      "selected": true,
+      "disabled": true,
+      "order": 2
+    },
+    {
+      "title": "单价",
+      "selected": true,
+      "disabled": false,
+      "order": 3
+    },
+    {
+      "title": "单位",
+      "selected": true,
+      "disabled": false,
+      "order": 4
+    },
+    {
+      "title": "数量",
+      "selected": true,
+      "disabled": false,
+      "order": 5
+    },
+    {
+      "title": "已发货数量",
+      "selected": true,
+      "disabled": false,
+      "order": 6
+    },
+    {
+      "title": "仓库名",
+      "selected": true,
+      "disabled": false,
+      "order": 7
+    },
+    {
+      "title": "小计",
+      "selected": true,
+      "disabled": false,
+      "order": 8
+    },
+    {
+      "title": "商品规格",
+      "selected": false,
+      "disabled": false,
+      "order": 9
+    },
+    {
+      "title": "是否赠品",
+      "selected": false,
+      "disabled": false,
+      "order": 10
+    },
+    {
+      "title": "商品分类",
+      "selected": true,
+      "disabled": false,
+      "order": 11
+    }
+  ],
+  "formCount": [],
+  "formFooter": [
+    {
+      "title": "备注",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "优惠金额",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "操作员",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "特批价",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "操作时间",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "配送方式",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "交货日期",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "自定义文本",
+      "selected": false,
+      "type": "custom",
+      "value": ""
+    },
+    {
+      "title": "自定义文本",
+      "selected": false,
+      "type": "custom",
+      "value": ""
+    }
+  ],
+  "formPic": {
+    "headerPic": "",
+    "footerPic": ""
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener, HostBinding, ViewChild, Renderer2 } from '@angular/core';
 import { NzResizeEvent } from 'ng-zorro-antd/resizable/ng-zorro-antd-resizable';
 import { TplEditService } from '../tpl-edit.service';
 
@@ -7,7 +7,15 @@ import { TplEditService } from '../tpl-edit.service';
   templateUrl: './dnd-element.component.html',
   styleUrls: ['./dnd-element.component.less'],
 })
-export class DndElementComponent {
+export class DndElementComponent implements OnInit, OnDestroy {
+  @ViewChild('dndEl', { static: false }) dndEl;
+  get width() {
+    return this._width;
+  }
+  get height() {
+    return this._height;
+  }
+  constructor(private srv: TplEditService, private renderer: Renderer2) {}
   @Input()
   boundary = '.header';
 
@@ -18,21 +26,15 @@ export class DndElementComponent {
   maxHeight: number;
 
   @Input()
-  minWidth: number = 40;
+  minWidth: number = 64;
 
   @Input()
-  minHeight = 40;
+  minHeight = 20;
 
-  private _width = 200;
-  private _height = 80;
+  private _width = 100;
+  private _height = 30;
   private id = -1;
-  get width() {
-    return this._width;
-  }
-  get height() {
-    return this._height;
-  }
-  constructor(private srv: TplEditService) {}
+  isActive = false;
 
   onResize({ width, height }: NzResizeEvent): void {
     cancelAnimationFrame(this.id);
@@ -40,5 +42,21 @@ export class DndElementComponent {
       this._width = width!;
       this._height = height!;
     });
+  }
+
+  @HostListener('click', ['$event.target'])
+  onClick(el: any) {
+    this.srv.activeEl(this);
+  }
+
+  del() {}
+
+  ngOnInit(): void {
+    this.srv.dndEl.push(this);
+    console.log(this.srv.dndEl.length);
+  }
+  ngOnDestroy(): void {
+    this.srv.dndEl = this.srv.dndEl.filter(e => e !== this);
+    console.log(this.srv.dndEl.length);
   }
 }

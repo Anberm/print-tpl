@@ -49,7 +49,7 @@
   position: relative;
 }
 .edit-tpl .paper:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 0;
@@ -76,7 +76,7 @@
   left: 0;
 }
 .edit-tpl .page-header:before {
-  content: "\9875\7709";
+  content: '\9875\7709';
   text-align: right;
   position: absolute;
   width: 24px;
@@ -98,7 +98,7 @@
   left: 0;
 }
 .edit-tpl .page-footer:before {
-  content: "\9875\811A";
+  content: '\9875\811A';
   text-align: right;
   position: absolute;
   width: 24px;
@@ -155,12 +155,12 @@
   background: #fff;
   overflow: hidden;
 }
-.nz-resizable-handle-bottomRight,
-.nz-resizable-handle-topRight,
-.nz-resizable-handle-bottomLeft,
-.nz-resizable-handle-topLeft {
-  width: 7px;
-  height: 7px;
-  background-color: #fff;
-  border: 1px solid #000;
+.edit-tpl {
+  & .body:hover,
+  & .footer:hover,
+  & .header:hover,
+  & .page-header:hover,
+  & .page-footer:hover {
+    border: 1px solid #13c19f;
+  }
 }

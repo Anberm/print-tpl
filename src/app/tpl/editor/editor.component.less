@@ -82,6 +82,7 @@
   line-height: 1.2;
   bottom: 0;
 }
+
 .edit-tpl .header {
   height: 30%;
   position: relative;
@@ -109,9 +110,11 @@
   -ms-flex-align: center;
   align-items: center;
   padding: 15px 0;
+  border: 1px dashed #ccc;
 }
 
 .edit-tpl .body {
+  border: 1px dashed #ccc;
   position: relative;
   background: white;
   border: 1px solid transparent;
@@ -119,7 +122,7 @@
 .edit-tpl .footer {
   position: relative;
   border-top: 1px dashed #ccc;
-  border: 1px solid transparent;
+  border: 1px dashed #ccc;
 }
 .toolpanel {
   position: absolute;
@@ -131,12 +134,9 @@
   background: #fff;
   overflow: hidden;
 }
-.nz-resizable-handle-bottomRight,
-.nz-resizable-handle-topRight,
-.nz-resizable-handle-bottomLeft,
-.nz-resizable-handle-topLeft {
-  width: 7px;
-  height: 7px;
-  background-color: #fff;
-  border: 1px solid #000;
+.ant-form-item-label {
+  text-align: left;
+}
+form {
+  padding: 16px;
 }

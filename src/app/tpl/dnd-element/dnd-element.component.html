@@ -1,5 +1,7 @@
 <div
-  class="dnd-el-active"
+  class="lm-dnd-el"
+  [ngClass]="{ 'lm-dnd-el-active': isActive }"
+  #dndEl
   nz-resizable
   nzBounds="window"
   [nzMaxWidth]="maxWidth"
@@ -15,5 +17,12 @@
   <nz-resize-handles></nz-resize-handles>
   <div class="dnd-el-handle" cdkDragHandle>
     <ng-content></ng-content>
+  </div>
+  <div class="lm-dnd-el-del">
+    <button nz-button nzType="primary" nzShape="circle" nzSize="small"
+    (click)="del()"
+    >
+      <i nz-icon nzType="delete" nzTheme="outline"></i>
+    </button>
   </div>
 </div>
