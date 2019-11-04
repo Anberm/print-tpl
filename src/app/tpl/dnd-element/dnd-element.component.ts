@@ -35,6 +35,10 @@ export class DndElementComponent implements OnInit, OnDestroy {
   private _height = 30;
   private id = -1;
   isActive = false;
+  fontSize = 13;
+  fontWeight: 'normal' | 'bold' = 'normal';
+  fontStyle: 'normal' | 'italic' = 'normal';
+  textDecoration: 'underline' | 'none' = 'none';
 
   onResize({ width, height }: NzResizeEvent): void {
     cancelAnimationFrame(this.id);

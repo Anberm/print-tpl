@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TplEditService } from '../tpl-edit.service';
 
 @Component({
   selector: 'lm-tool-bar',
@@ -6,6 +7,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tool-bar.component.less'],
 })
 export class ToolBarComponent {
-  fontSize = 13;
-  constructor() {}
+  constructor(public srv: TplEditService) {}
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -76,7 +77,7 @@ export class TplEditService {
   // 表尾高度
   footerHeight = 80;
   // 页眉
-  paperHeader = [
+  paperHeaders = [
     {
       name: '无',
       value: undefined,
@@ -86,9 +87,10 @@ export class TplEditService {
       value: 'company name',
     },
   ];
+  paperHeader = this.paperHeaders[0];
   paperHeaderText = '公司名称';
   // 页脚
-  paperFooter = [
+  paperFooters = [
     {
       name: '无',
       value: undefined,
@@ -97,13 +99,12 @@ export class TplEditService {
       name: '第1页',
       value: 'one',
     },
-    ,
     {
       name: '第1页,共n页',
       value: 'one and count',
     },
   ];
-
+  paperFooter = this.paperFooters[0];
   paperFooterText = '第1页,共2页';
 
   // 是否连续打印
@@ -126,10 +127,59 @@ export class TplEditService {
   // 打印图片
   formPic = [];
 
-  constructor() {}
+  currentActiveEl;
+  fontSize = 13;
+  fontWeight: 'normal' | 'bold' = 'normal';
+  fontStyle: 'normal' | 'italic' = 'normal';
+  textDecoration: 'underline' | 'none' = 'none';
+
+  constructor(private http: HttpClient) {
+    this.http.get('./assets/data.json').subscribe((x: any) => {
+      this.formHeaders = x.formHeaders;
+      this.formBodys = x.formBodys;
+      this.formCount = x.formCount;
+      this.formFooter = x.formFooter;
+      this.formPic = x.formPic;
+    });
+  }
   activeEl(el) {
     el.isActive = true;
+    this.currentActiveEl = el;
+    this.fontSize = el.fontSize;
+    this.fontStyle = el.fontStyle;
+    this.textDecoration = el.textDecoration;
     this.dndEl.filter(e => e !== el).forEach(e => (e.isActive = false));
+  }
+
+  bold() {
+    if (this.currentActiveEl.fontWeight === 'normal') {
+      this.currentActiveEl.fontWeight = 'bold';
+    } else {
+      this.currentActiveEl.fontWeight = 'normal';
+    }
+  }
+
+  italic() {
+    if (this.currentActiveEl.fontStyle === 'normal') {
+      this.currentActiveEl.fontStyle = 'italic';
+    } else {
+      this.currentActiveEl.fontStyle = 'normal';
+    }
+  }
+
+  underline() {
+    if (this.currentActiveEl.textDecoration === 'none') {
+      this.currentActiveEl.textDecoration = 'underline';
+    } else {
+      this.currentActiveEl.textDecoration = 'none';
+    }
+  }
+
+  changeFontSize(e) {
+    console.log(e);
+    if (this.currentActiveEl) {
+      this.currentActiveEl.fontSize = this.fontSize;
+    }
   }
 
   reset() {}

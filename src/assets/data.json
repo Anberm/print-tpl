@@ -53,68 +53,57 @@
     {
       "title": "商品编号",
       "selected": false,
-      "disabled": false,
-      "order": 1
+      "disabled": false
     },
     {
       "title": "商品名称",
       "selected": true,
-      "disabled": true,
-      "order": 2
+      "disabled": true
     },
     {
       "title": "单价",
       "selected": true,
-      "disabled": false,
-      "order": 3
+      "disabled": false
     },
     {
       "title": "单位",
       "selected": true,
-      "disabled": false,
-      "order": 4
+      "disabled": false
     },
     {
       "title": "数量",
       "selected": true,
-      "disabled": false,
-      "order": 5
+      "disabled": false
     },
     {
       "title": "已发货数量",
       "selected": true,
-      "disabled": false,
-      "order": 6
+      "disabled": false
     },
     {
       "title": "仓库名",
       "selected": true,
-      "disabled": false,
-      "order": 7
+      "disabled": false
     },
     {
       "title": "小计",
       "selected": true,
-      "disabled": false,
-      "order": 8
+      "disabled": false
     },
     {
       "title": "商品规格",
       "selected": false,
-      "disabled": false,
-      "order": 9
+      "disabled": false
     },
     {
       "title": "是否赠品",
       "selected": false,
-      "disabled": false,
-      "order": 10
+      "disabled": false
     },
     {
       "title": "商品分类",
       "selected": true,
-      "disabled": false,
-      "order": 11
+      "disabled": false
     }
   ],
   "formCount": [],

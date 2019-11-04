@@ -15,13 +15,18 @@
   cdkDrag
 >
   <nz-resize-handles></nz-resize-handles>
-  <div class="dnd-el-handle" cdkDragHandle>
+  <div
+    class="dnd-el-handle"
+    cdkDragHandle
+    [style.font-size.px]="fontSize"
+    [style.font-weight]="fontWeight"
+    [style.font-style]="fontStyle"
+    [style.text-decoration]="textDecoration"
+  >
     <ng-content></ng-content>
   </div>
   <div class="lm-dnd-el-del">
-    <button nz-button nzType="primary" nzShape="circle" nzSize="small"
-    (click)="del()"
-    >
+    <button nz-button nzType="primary" nzShape="circle" nzSize="small" (click)="del()">
       <i nz-icon nzType="delete" nzTheme="outline"></i>
     </button>
   </div>

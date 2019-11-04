@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TplEditService } from '../tpl-edit.service';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'lm-editor',
@@ -10,4 +11,7 @@ export class EditorComponent implements OnInit {
   constructor(public srv: TplEditService) {}
 
   ngOnInit() {}
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.srv.formBodys, event.previousIndex, event.currentIndex);
+  }
 }
