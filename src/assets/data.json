@@ -161,13 +161,13 @@
     {
       "title": "自定义文本",
       "selected": false,
-      "type": "custom",
+      "type": "input",
       "value": ""
     },
     {
       "title": "自定义文本",
       "selected": false,
-      "type": "custom",
+      "type": "input",
       "value": ""
     }
   ],

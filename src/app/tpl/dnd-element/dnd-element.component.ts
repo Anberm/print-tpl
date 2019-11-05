@@ -79,6 +79,9 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
 
   analyzeStyle(v: any = {}) {
     const styleObj: any = {};
+    if (!v.style) {
+      v.style = '';
+    }
     const styleArray = v.style.split(';');
     styleArray.forEach(sy => {
       if (sy.includes('height')) {

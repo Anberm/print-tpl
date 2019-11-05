@@ -29,8 +29,8 @@
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表尾区
         </div>
-        <lm-dnd-element *ngFor="let h of srv.selectedFormFooters">
-          {{ h.title }}
+        <lm-dnd-element [data]="h" *ngFor="let h of srv.selectedFormFooters">
+          {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>
       </div>
     </div>
@@ -245,7 +245,7 @@
                   >{{ p.title }}</label
                 >
                 <input
-                  *ngIf="p.type === 'custom'"
+                  *ngIf="p.type === 'input'"
                   nz-input
                   [disabled]="!p.selected"
                   [(ngModel)]="p.value"
