@@ -13,7 +13,7 @@
           表头区
         </div>
 
-        <lm-dnd-element [data]="h" *ngFor="let h of srv.selectedFormHeaders">
+        <lm-dnd-element [data]="h" boundary='.header' *ngFor="let h of srv.selectedFormHeaders">
           {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>
       </div>
@@ -29,7 +29,7 @@
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表尾区
         </div>
-        <lm-dnd-element [data]="h" *ngFor="let h of srv.selectedFormFooters">
+        <lm-dnd-element [data]="h" boundary='.footer' *ngFor="let h of srv.selectedFormFooters">
           {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>
       </div>
