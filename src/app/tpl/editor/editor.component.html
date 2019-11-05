@@ -12,14 +12,9 @@
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表头区
         </div>
-        <lm-dnd-element>
-          字段一
-        </lm-dnd-element>
-        <lm-dnd-element>
-          字段二
-        </lm-dnd-element>
-        <lm-dnd-element>
-          字段三
+
+        <lm-dnd-element *ngFor="let h of srv.selectedFormHeaders">
+          {{ h.title }}
         </lm-dnd-element>
       </div>
       <div class="body">
@@ -27,13 +22,16 @@
           表体区
         </div>
         <div cdkDropList cdkDropListOrientation="horizontal" class="table-header" (cdkDropListDropped)="drop($event)">
-          <div class="table-header-item" *ngFor="let h of srv.formBodys" cdkDrag>{{ h.title }}</div>
+          <div class="table-header-item" *ngFor="let h of srv.selectedFormBodys" cdkDrag>{{ h.title }}</div>
         </div>
       </div>
       <div class="footer" [style.height.px]="srv.footerHeight">
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表尾区
         </div>
+        <lm-dnd-element *ngFor="let h of srv.selectedFormFooters">
+          {{ h.title }}
+        </lm-dnd-element>
       </div>
     </div>
   </div>
@@ -206,6 +204,7 @@
                   class="collapse-checkbox"
                   nz-checkbox
                   [(ngModel)]="p.selected"
+                  (ngModelChange)="srv.formHeaderChange()"
                   [ngModelOptions]="{ standalone: true }"
                   >{{ p.title }}</label
                 >
@@ -225,6 +224,7 @@
                   nz-checkbox
                   [(ngModel)]="p.selected"
                   [nzDisabled]="p.disabled"
+                  (ngModelChange)="srv.formBodyChange()"
                   [ngModelOptions]="{ standalone: true }"
                   >{{ p.title }}</label
                 >
@@ -233,13 +233,14 @@
           </nz-collapse-panel>
           <nz-collapse-panel nzHeader="数据合计"> </nz-collapse-panel>
           <nz-collapse-panel nzHeader="表尾字段">
-            <ng-container *ngFor="let p of srv.formFooter">
+            <ng-container *ngFor="let p of srv.formFooters">
               <div class="collapse-checkbox">
                 <label
                   class="collapse-checkbox"
                   nz-checkbox
                   [(ngModel)]="p.selected"
                   [nzDisabled]="p.disabled"
+                  (ngModelChange)="srv.formFooterChange()"
                   [ngModelOptions]="{ standalone: true }"
                   >{{ p.title }}</label
                 >

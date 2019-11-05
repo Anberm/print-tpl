@@ -118,14 +118,19 @@ export class TplEditService {
 
   // 表头字段
   formHeaders = [];
+  selectedFormHeaders = [];
   // 表体字段
   formBodys = [];
+  selectedFormBodys = [];
   // 数据合计
   formCount = [];
+  selectedFormCount = [];
   // 表尾字段
-  formFooter = [];
+  formFooters = [];
+  selectedFormFooters = [];
   // 打印图片
   formPic = [];
+  selectedFormPic = [];
 
   currentActiveEl;
   fontSize = 13;
@@ -138,10 +143,18 @@ export class TplEditService {
       this.formHeaders = x.formHeaders;
       this.formBodys = x.formBodys;
       this.formCount = x.formCount;
-      this.formFooter = x.formFooter;
+      this.formFooters = x.formFooters;
       this.formPic = x.formPic;
+      this.initSelected();
     });
   }
+
+  initSelected() {
+    this.formHeaderChange();
+    this.formBodyChange();
+    this.formFooterChange();
+  }
+
   activeEl(el) {
     el.isActive = true;
     this.currentActiveEl = el;
@@ -175,11 +188,30 @@ export class TplEditService {
     }
   }
 
+  get isBold() {
+    return this.currentActiveEl && this.currentActiveEl.fontWeight === 'bold';
+  }
+  get isItalic() {
+    return this.currentActiveEl && this.currentActiveEl.fontStyle === 'italic';
+  }
+  get isUnderline() {
+    return this.currentActiveEl && this.currentActiveEl.textDecoration === 'underline';
+  }
+
   changeFontSize(e) {
-    console.log(e);
     if (this.currentActiveEl) {
       this.currentActiveEl.fontSize = this.fontSize;
     }
+  }
+
+  formHeaderChange() {
+    this.selectedFormHeaders = this.formHeaders.filter(h => h.selected);
+  }
+  formBodyChange() {
+    this.selectedFormBodys = this.formBodys.filter(h => h.selected);
+  }
+  formFooterChange() {
+    this.selectedFormFooters = this.formFooters.filter(h => h.selected);
   }
 
   reset() {}

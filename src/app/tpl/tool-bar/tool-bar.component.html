@@ -14,13 +14,34 @@
           [nzStep]="1"
           (ngModelChange)="srv.changeFontSize($event)"
         ></nz-input-number>
-        <button nz-button class="m-hsm" nzSize="small" nzType="default" (click)="srv.bold()">
+        <button
+          nz-button
+          class="m-hsm"
+          [ngClass]="{ active: srv.isBold }"
+          nzSize="small"
+          nzType="default"
+          (click)="srv.bold()"
+        >
           <i nz-icon nzType="bold" nzTheme="outline"></i>
         </button>
-        <button nz-button class="m-hsm" nzSize="small" nzType="default" (click)="srv.italic()">
+        <button
+          nz-button
+          class="m-hsm"
+          [ngClass]="{ active: srv.isItalic }"
+          nzSize="small"
+          nzType="default"
+          (click)="srv.italic()"
+        >
           <i nz-icon nzType="italic" nzTheme="outline"></i>
         </button>
-        <button nz-button class="m-hsm" nzSize="small" nzType="default" (click)="srv.underline()">
+        <button
+          nz-button
+          class="m-hsm"
+          [ngClass]="{ active: srv.isUnderline }"
+          nzSize="small"
+          nzType="default"
+          (click)="srv.underline()"
+        >
           <i nz-icon nzType="underline" nzTheme="outline"></i>
         </button>
       </div>

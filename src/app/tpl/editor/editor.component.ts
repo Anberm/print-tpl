@@ -12,6 +12,6 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {}
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.srv.formBodys, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.srv.selectedFormBodys, event.previousIndex, event.currentIndex);
   }
 }
