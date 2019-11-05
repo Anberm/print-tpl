@@ -4,49 +4,57 @@
       "title": "模板标题",
       "selected": true,
       "type": "input",
-      "value": "xx订货单"
+      "value": "xx订货单",
+      "style": ""
     },
     {
       "title": "地区",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     },
     {
       "title": "公司名称",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     },
     {
       "title": "客户名称",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     },
     {
       "title": "下单时间",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     },
     {
       "title": "联系电话",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     },
     {
       "title": "地区",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     },
     {
       "title": "地区",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "style": ""
     }
   ],
   "formBodys": [

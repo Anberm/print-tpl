@@ -13,8 +13,8 @@
           表头区
         </div>
 
-        <lm-dnd-element *ngFor="let h of srv.selectedFormHeaders">
-          {{ h.title }}
+        <lm-dnd-element [data]="h" *ngFor="let h of srv.selectedFormHeaders">
+          {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>
       </div>
       <div class="body">

@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class TplEditService {
-  dndEl = [];
 
   // 打印对象
   printObjs = [
@@ -161,7 +160,14 @@ export class TplEditService {
     this.fontSize = el.fontSize;
     this.fontStyle = el.fontStyle;
     this.textDecoration = el.textDecoration;
-    this.dndEl.filter(e => e !== el).forEach(e => (e.isActive = false));
+    this.selectedFormHeaders.filter(e => e !== el).forEach(e => (e.isActive = false));
+    this.selectedFormFooters.filter(e => e !== el).forEach(e => (e.isActive = false));
+  }
+
+  removeEl(el) {
+    el.selected = false;
+    this.selectedFormHeaders = this.selectedFormHeaders.filter(e => e !== el);
+    this.selectedFormFooters = this.selectedFormFooters.filter(e => e !== el);
   }
 
   bold() {

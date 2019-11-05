@@ -1,6 +1,6 @@
 <div
   class="lm-dnd-el"
-  [ngClass]="{ 'lm-dnd-el-active': isActive }"
+  [ngClass]="{ 'lm-dnd-el-active': data.isActive }"
   #dndEl
   nz-resizable
   nzBounds="window"
@@ -8,21 +8,20 @@
   [nzMinWidth]="minWidth"
   [nzMaxHeight]="maxHeight"
   [nzMinHeight]="minHeight"
-  [style.height.px]="height"
-  [style.width.px]="width"
+  [style.height.px]="data.height"
+  [style.width.px]="data.width"
+  [style.transform]="data.transform"
+  [style.font-size.px]="data.fontSize"
+  [style.font-weight]="data.fontWeight"
+  [style.font-style]="data.fontStyle"
+  [style.text-decoration]="data.textDecoration"
   (nzResize)="onResize($event)"
   [cdkDragBoundary]="boundary"
   cdkDrag
+  (cdkDragEnded)="dragEnded($event)"
 >
   <nz-resize-handles></nz-resize-handles>
-  <div
-    class="dnd-el-handle"
-    cdkDragHandle
-    [style.font-size.px]="fontSize"
-    [style.font-weight]="fontWeight"
-    [style.font-style]="fontStyle"
-    [style.text-decoration]="textDecoration"
-  >
+  <div class="dnd-el-handle" cdkDragHandle>
     <ng-content></ng-content>
   </div>
   <div class="lm-dnd-el-del">
