@@ -1,15 +1,20 @@
 <div class="edit-tpl">
   <lm-tool-bar> </lm-tool-bar>
   <div class="panel">
-    <div class="paper" [style.padding.px]="srv.padding">
-      <lm-dnd-element type='image' [data]="h" boundary=".paper" *ngFor="let h of srv.fileList">
+    <div
+      class="paper"
+      [style.padding.px]="srv.padding"
+      [style.height.px]="srv.paperHeightPx"
+      [style.width.px]="srv.paperWidthPx"
+    >
+      <lm-dnd-element type="image" [data]="h" boundary=".paper" *ngFor="let h of srv.fileList">
         <img class="dnd-img" [src]="h.thumbUrl" />
       </lm-dnd-element>
       <div class="page-header">
-        {{ srv.paperHeaderText }}
+        {{ srv.paperHeader.name }}
       </div>
       <div class="page-footer">
-        {{ srv.paperFooterText }}
+        {{ srv.paperFooter.name }}
       </div>
       <div class="header" [style.height.px]="srv.headerHeight">
         <div class="area-mark" [style.left.px]="srv.markLeft">
@@ -28,7 +33,11 @@
           <div class="table-header-item" *ngFor="let h of srv.selectedFormBodys" cdkDrag>{{ h.title }}</div>
         </div>
       </div>
-      <div class="footer" [style.height.px]="srv.footerHeight">
+      <div
+        class="footer"
+        [style.height.px]="srv.footerHeight"
+        [ngStyle]="{ bottom: srv.fixedFooter ? '30px' : 'auto', width: 'calc(100% - ' + srv.padding * 2 + 'px)' }"
+      >
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表尾区
         </div>
@@ -65,9 +74,34 @@
           <nz-form-item>
             <nz-form-label nzRequired>纸张类型</nz-form-label>
             <nz-form-control>
-              <nz-select [(ngModel)]="srv.paper" [ngModelOptions]="{ standalone: true }">
+              <nz-select
+                [(ngModel)]="srv.paper"
+                (ngModelChange)="srv.paperChange($event)"
+                [ngModelOptions]="{ standalone: true }"
+              >
                 <nz-option *ngFor="let p of srv.papers" [nzValue]="p" [nzLabel]="p.name"></nz-option>
               </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item *ngIf="!srv.paper.value">
+            <nz-form-control>
+              <nz-col nzSpan="12">
+                <nz-input-number
+                  [ngModelOptions]="{ standalone: true }"
+                  [nzMin]="0"
+                  [nzMax]="300"
+                  [(ngModel)]="srv.paperWidth"
+                ></nz-input-number>
+              </nz-col>
+              <div nz-col nzSpan="12">
+                <nz-input-number
+                  [ngModelOptions]="{ standalone: true }"
+                  [nzMin]="0"
+                  [nzMax]="300"
+                  [ngStyle]="{ marginLeft: '16px' }"
+                  [(ngModel)]="srv.paperHeight"
+                ></nz-input-number>
+              </div>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
@@ -155,7 +189,11 @@
           <nz-form-item>
             <nz-form-label>单据批量打印设置</nz-form-label>
             <nz-form-control>
-              <label nz-checkbox [(ngModel)]="srv.isContinuousPrinting" [ngModelOptions]="{ standalone: true }"
+              <label
+                nz-checkbox
+                [nzDisabled]="srv.fixedFooter"
+                [(ngModel)]="srv.isContinuousPrinting"
+                [ngModelOptions]="{ standalone: true }"
                 >连续打印（不换页打印）</label
               >
               <i
@@ -183,7 +221,11 @@
                 >每页打印表尾</label
               >
               <br />
-              <label nz-checkbox [(ngModel)]="srv.fixedFooter" [ngModelOptions]="{ standalone: true }"
+              <label
+                nz-checkbox
+                [nzDisabled]="srv.isContinuousPrinting"
+                [(ngModel)]="srv.fixedFooter"
+                [ngModelOptions]="{ standalone: true }"
                 >表尾锁定底部</label
               >
               <i

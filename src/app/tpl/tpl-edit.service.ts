@@ -1,5 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+function getDPI() {
+  const arrDPI = new Array();
+  // tslint:disable-next-line: no-string-literal
+  if (window.screen['deviceXDPI']) {
+    // tslint:disable-next-line: no-string-literal
+    arrDPI[0] = window.screen['deviceXDPI'];
+    // tslint:disable-next-line: no-string-literal
+    arrDPI[1] = window.screen['deviceYDPI'];
+  } else {
+    const tmpNode: any = document.createElement('DIV');
+    tmpNode.style.cssText = 'width:1in;height:1in;position:absolute;left:0px;top:0px;z-index:99;visibility:hidden';
+    document.body.appendChild(tmpNode);
+    // tslint:disable-next-line: radix
+    arrDPI[0] = parseInt(tmpNode.offsetWidth);
+    // tslint:disable-next-line: radix
+    arrDPI[1] = parseInt(tmpNode.offsetHeight);
+    tmpNode.parentNode.removeChild(tmpNode);
+  }
+  return arrDPI;
+}
+function mmToPx(v) {
+  return Math.round((v / 25.4) * getDPI()[0]);
+}
+function pxToMm(v) {
+  return Math.round((v * 25.4) / getDPI()[0]);
+}
 
 @Injectable({
   providedIn: 'root',
@@ -57,9 +83,25 @@ export class TplEditService {
   ];
   paper = this.papers[0];
   // 纸张宽度
-  paperWidth = 241;
+  paperWidthPx = mmToPx(241);
+  _paperWidth = 241;
+  get paperWidth() {
+    return this._paperWidth;
+  }
+  set paperWidth(v) {
+    this._paperWidth = v;
+    this.paperWidthPx = mmToPx(this._paperWidth);
+  }
   // 纸张高度
-  paperHeight = 93;
+  paperHeightPx = mmToPx(93);
+  _paperHeight = 93;
+  get paperHeight() {
+    return this._paperHeight;
+  }
+  set paperHeight(v) {
+    this._paperHeight = v;
+    this.paperHeightPx = mmToPx(this._paperHeight);
+  }
 
   // 内边距
   _padding = 15;
@@ -70,6 +112,7 @@ export class TplEditService {
   get padding() {
     return this._padding;
   }
+
   // 表头高度
   headerHeight = 100;
   // 表尾高度
@@ -86,7 +129,6 @@ export class TplEditService {
     },
   ];
   paperHeader = this.paperHeaders[0];
-  paperHeaderText = '公司名称';
   // 页脚
   paperFooters = [
     {
@@ -103,7 +145,6 @@ export class TplEditService {
     },
   ];
   paperFooter = this.paperFooters[0];
-  paperFooterText = '第1页,共2页';
 
   // 是否连续打印
   isContinuousPrinting = false;
@@ -219,6 +260,13 @@ export class TplEditService {
   }
   formFooterChange() {
     this.selectedFormFooters = this.formFooters.filter(h => h.selected);
+  }
+
+  paperChange($event) {
+    if (this.paper.value) {
+      this.paperHeight = this.paper.value.height;
+      this.paperWidth = this.paper.value.width;
+    }
   }
 
   upload($event) {
