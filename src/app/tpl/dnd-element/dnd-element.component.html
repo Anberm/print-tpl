@@ -21,7 +21,7 @@
   (cdkDragEnded)="dragEnded($event)"
 >
   <nz-resize-handles></nz-resize-handles>
-  <div class="dnd-el-handle" cdkDragHandle>
+  <div class="dnd-el-handle" cdkDragHandle [style.text-decoration]="data.textDecoration">
     <ng-content></ng-content>
   </div>
   <div class="lm-dnd-el-del">

@@ -9,6 +9,7 @@ import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { FormsModule } from '@angular/forms';
 import { PrintFrameComponent } from './print-frame/print-frame.component';
 import { ResizableElementComponent } from './resizable-element/resizable-element.component';
+import { StylePipe } from './style.pipe';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,16 @@ import { ResizableElementComponent } from './resizable-element/resizable-element
     EditorComponent,
     PrintFrameComponent,
     ResizableElementComponent,
+    StylePipe,
   ],
-  exports: [DndElementComponent, ToolBarComponent, EditorComponent],
+  exports: [
+    DndElementComponent,
+    ToolBarComponent,
+    EditorComponent,
+    PrintFrameComponent,
+    ResizableElementComponent,
+    StylePipe,
+  ],
   imports: [FormsModule, NgZorroAntdModule, NzResizableModule, DragDropModule, CommonModule],
 })
 export class TplModule {}

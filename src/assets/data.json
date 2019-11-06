@@ -114,7 +114,20 @@
       "disabled": false
     }
   ],
-  "formCount": [],
+  "formCount": [
+    {
+      "title": "小计合计",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    },
+    {
+      "title": "数量合计",
+      "selected": false,
+      "type": "label",
+      "value": ""
+    }
+  ],
   "formFooters": [
     {
       "title": "备注",
