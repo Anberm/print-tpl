@@ -64,6 +64,7 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
     this.id = requestAnimationFrame(() => {
       this.data.width = width!;
       this.data.height = height!;
+      this.data.style = this.dndEl.nativeElement.attributes.style.value;
     });
   }
 

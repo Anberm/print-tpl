@@ -8,9 +8,16 @@ import { EditorComponent } from './editor/editor.component';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { FormsModule } from '@angular/forms';
 import { PrintFrameComponent } from './print-frame/print-frame.component';
+import { ResizableElementComponent } from './resizable-element/resizable-element.component';
 
 @NgModule({
-  declarations: [DndElementComponent, ToolBarComponent, EditorComponent, PrintFrameComponent],
+  declarations: [
+    DndElementComponent,
+    ToolBarComponent,
+    EditorComponent,
+    PrintFrameComponent,
+    ResizableElementComponent,
+  ],
   exports: [DndElementComponent, ToolBarComponent, EditorComponent],
   imports: [FormsModule, NgZorroAntdModule, NzResizableModule, DragDropModule, CommonModule],
 })

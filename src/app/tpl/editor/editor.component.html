@@ -29,8 +29,16 @@
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表体区
         </div>
-        <div cdkDropList cdkDropListOrientation="horizontal" class="table-header" (cdkDropListDropped)="drop($event)">
-          <div class="table-header-item" *ngFor="let h of srv.selectedFormBodys" cdkDrag>{{ h.title }}</div>
+        <div class="body-table">
+          <ul cdkDropList cdkDropListOrientation="horizontal" class="table-header" (cdkDropListDropped)="drop($event)">
+            <li class="table-header-item" *ngFor="let h of srv.selectedFormBodys" cdkDrag>
+              <lm-resizable-element [data]="h">
+                <div class="table-el-handle" cdkDragHandle>
+                  {{ h.title }}
+                </div>
+              </lm-resizable-element>
+            </li>
+          </ul>
         </div>
       </div>
       <div
