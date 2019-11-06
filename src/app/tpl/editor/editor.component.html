@@ -7,9 +7,6 @@
       [style.height.px]="srv.paperHeightPx"
       [style.width.px]="srv.paperWidthPx"
     >
-      <lm-dnd-element type="image" [data]="h" boundary=".paper" *ngFor="let h of srv.fileList">
-        <img class="dnd-img" [src]="h.thumbUrl" />
-      </lm-dnd-element>
       <div class="page-header">
         {{ srv.paperHeader.value ? srv.paperHeader.name : '' }}
       </div>
@@ -20,7 +17,9 @@
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表头区
         </div>
-
+        <lm-dnd-element type="image" [data]="h" boundary=".paper" *ngFor="let h of srv.fileList">
+            <img class="dnd-img" [src]="h.thumbUrl" />
+          </lm-dnd-element>
         <lm-dnd-element [data]="h" boundary=".header" *ngFor="let h of srv.selectedFormHeaders">
           {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>

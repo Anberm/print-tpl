@@ -4,9 +4,6 @@
   [style.height.px]="srv.paperHeight"
   [style.width.px]="srv.paperWidth"
 >
-  <div *ngFor="let h of srv.formPics" [style]="h.style | style">
-    <img [src]="h.value" />
-  </div>
   <div class="page-header" [style.width.px]="srv.paperWidth">
     {{ srv.paperHeaderText }}
   </div>
@@ -14,8 +11,11 @@
     {{ srv.paperFooterText }}
   </div>
   <div class="header" [style.height.px]="srv.headerHeight">
+    <div *ngFor="let h of srv.formPics" [style]="h.style | style">
+      <img [src]="h.value" />
+    </div>
     <div class="placeholder" *ngFor="let h of srv.formHeaders">
-      <div [style]="h.style | style">{{ h.title }}:{{ h.value }}</div>
+      <div [style]="h.style | style">{{ h.title }}{{ h.title ? ':' : '' }}{{ h.value }}</div>
     </div>
   </div>
   <div class="body">

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { mmToPx } from './dpi.util';
+import { TplElement } from './tpl-print.service';
 
 @Injectable({
   providedIn: 'root',
@@ -249,4 +250,46 @@ export class TplEditService {
   }
 
   reset() {}
+
+  convertPreviewPrint() {
+    const pObj: any = {
+      paperHeaderText: this.paperHeader.value ? this.paperHeader.name : '',
+      paperFooterText: this.paperFooter.value ? this.paperFooter.name : '',
+      paperWidth: this.paperWidthPx,
+      paperHeight: this.paperHeightPx,
+      padding: this.padding,
+      headerHeight: this.headerHeight,
+      footerHeight: this.footerHeight,
+      fixedFooter: this.fixedFooter,
+      formPics: this.fileList.map(x => {
+        return {
+          title: '',
+          value: x.thumbUrl,
+          style: x.style,
+        } as TplElement;
+      }),
+      formHeaders: this.selectedFormHeaders.map(x => {
+        return {
+          title: x.type === 'input' ? '' : x.title,
+          value: x.value,
+          style: x.style,
+        } as TplElement;
+      }),
+      formBodys: this.selectedFormBodys.map(x => {
+        return {
+          title: x.title,
+          value: x.value,
+          style: x.style,
+        } as TplElement;
+      }),
+      formFooters: this.selectedFormFooters.map(x => {
+        return {
+          title: x.type === 'input' ? '' : x.title,
+          value: x.value,
+          style: x.style,
+        } as TplElement;
+      }),
+    };
+    return pObj;
+  }
 }

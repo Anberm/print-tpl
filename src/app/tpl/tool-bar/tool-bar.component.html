@@ -47,12 +47,15 @@
       </div>
     </div>
     <div class="right">
-      <button nz-button class="m-hsm" nzSize="small" nzType="default">
+      <button nz-button class="m-hsm" nzSize="small" nzType="default" (click)="preview($event)">
         打印预览
       </button>
-      <button nz-button class="m-hsm" nzSize="small" nzType="primary">
+      <button nz-button class="m-hsm" nzSize="small" nzType="primary" (click)="save($event)">
         保存
       </button>
     </div>
   </div>
+</div>
+<div class="tpl-print-temp" #tplPrint>
+  <lm-print-frame></lm-print-frame>
 </div>

@@ -15,7 +15,6 @@ export class ResizableElementComponent implements OnInit, AfterViewInit {
   set data(v) {
     this.analyzeStyle(v);
     this._data = v;
-    console.log(this._data);
   }
   get data() {
     return this._data;
