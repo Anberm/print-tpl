@@ -11,8 +11,8 @@ export interface TplElement {
 export class TplPrintService {
   paperHeaderText = '';
   paperFooterText = '';
-  paperWidth = mmToPx(241);
-  paperHeight = mmToPx(93);
+  paperWidth = mmToPx(210);
+  paperHeight = mmToPx(297);
   padding = 15;
   // 表头高度
   headerHeight = 100;
@@ -332,8 +332,8 @@ export class TplPrintService {
   reset() {
     this.paperHeaderText = '';
     this.paperFooterText = '';
-    this.paperWidth = mmToPx(241);
-    this.paperHeight = mmToPx(93);
+    this.paperWidth = mmToPx(210);
+    this.paperHeight = mmToPx(297);
     this.padding = 15;
     // 表头高度
     this.headerHeight = 100;

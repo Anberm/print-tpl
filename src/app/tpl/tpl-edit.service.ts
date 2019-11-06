@@ -59,8 +59,8 @@ export class TplEditService {
   ];
   paper = this.papers[0];
   // 纸张宽度
-  paperWidthPx = mmToPx(241);
-  _paperWidth = 241;
+  paperWidthPx = mmToPx(210);
+  _paperWidth = 210;
   get paperWidth() {
     return this._paperWidth;
   }
@@ -69,8 +69,8 @@ export class TplEditService {
     this.paperWidthPx = mmToPx(this._paperWidth);
   }
   // 纸张高度
-  paperHeightPx = mmToPx(93);
-  _paperHeight = 93;
+  paperHeightPx = mmToPx(297);
+  _paperHeight = 297;
   get paperHeight() {
     return this._paperHeight;
   }
