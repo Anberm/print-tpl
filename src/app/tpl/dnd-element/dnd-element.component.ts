@@ -154,5 +154,6 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {}
   ngAfterViewInit(): void {
     this.data.style = this.dndEl.nativeElement.attributes.style.value;
+    this.data.el = this.dndEl.nativeElement;
   }
 }

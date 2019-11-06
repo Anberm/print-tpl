@@ -189,26 +189,45 @@ export class TplEditService {
   }
 
   bold() {
+    if (!this.currentActiveEl) {
+      return;
+    }
     if (this.currentActiveEl.fontWeight === 'normal') {
       this.currentActiveEl.fontWeight = 'bold';
     } else {
       this.currentActiveEl.fontWeight = 'normal';
     }
+    this.refreshStyle();
   }
 
   italic() {
+    if (!this.currentActiveEl) {
+      return;
+    }
     if (this.currentActiveEl.fontStyle === 'normal') {
       this.currentActiveEl.fontStyle = 'italic';
     } else {
       this.currentActiveEl.fontStyle = 'normal';
     }
+    this.refreshStyle();
   }
 
   underline() {
+    if (!this.currentActiveEl) {
+      return;
+    }
     if (this.currentActiveEl.textDecoration === 'none') {
       this.currentActiveEl.textDecoration = 'underline';
     } else {
       this.currentActiveEl.textDecoration = 'none';
+    }
+    this.refreshStyle();
+  }
+  refreshStyle() {
+    if (this.currentActiveEl) {
+      setTimeout(() => {
+        this.currentActiveEl.style = this.currentActiveEl.el.attributes.style.value;
+      }, 20);
     }
   }
 
@@ -225,6 +244,7 @@ export class TplEditService {
   changeFontSize(e) {
     if (this.currentActiveEl) {
       this.currentActiveEl.fontSize = this.fontSize;
+      this.refreshStyle();
     }
   }
 

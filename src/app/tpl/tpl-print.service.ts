@@ -326,7 +326,7 @@ export class TplPrintService {
     this.printHTML = srcdoc;
     this.createIframe(srcdoc);
     this.write();
-    // this.startPrint();
+    this.startPrint();
   }
 
   reset() {

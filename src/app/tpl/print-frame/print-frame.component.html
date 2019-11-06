@@ -11,8 +11,10 @@
     {{ srv.paperFooterText }}
   </div>
   <div class="header" [style.height.px]="srv.headerHeight">
-    <div *ngFor="let h of srv.formPics" [style]="h.style | style">
-      <img [src]="h.value" />
+    <div class="placeholder" *ngFor="let h of srv.formPics">
+      <div [style]="h.style | style">
+        <img [src]="h.value" />
+      </div>
     </div>
     <div class="placeholder" *ngFor="let h of srv.formHeaders">
       <div [style]="h.style | style">{{ h.title }}{{ h.title ? ':' : '' }}{{ h.value }}</div>

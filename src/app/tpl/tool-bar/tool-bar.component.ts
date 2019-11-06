@@ -15,7 +15,9 @@ export class ToolBarComponent {
     console.log(this.tplPrint);
     const pObj = this.srv.convertPreviewPrint();
     this.printSrv.convert(pObj);
-    this.printSrv.print(this.tplPrint.nativeElement.innerHTML);
+    setTimeout(() => {
+      this.printSrv.print(this.tplPrint.nativeElement.innerHTML);
+    }, 100);
   }
   save($event) {}
 }
