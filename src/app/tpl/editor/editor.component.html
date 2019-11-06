@@ -2,6 +2,9 @@
   <lm-tool-bar> </lm-tool-bar>
   <div class="panel">
     <div class="paper" [style.padding.px]="srv.padding">
+      <lm-dnd-element type='image' [data]="h" boundary=".paper" *ngFor="let h of srv.fileList">
+        <img class="dnd-img" [src]="h.thumbUrl" />
+      </lm-dnd-element>
       <div class="page-header">
         {{ srv.paperHeaderText }}
       </div>
@@ -13,7 +16,7 @@
           表头区
         </div>
 
-        <lm-dnd-element [data]="h" boundary='.header' *ngFor="let h of srv.selectedFormHeaders">
+        <lm-dnd-element [data]="h" boundary=".header" *ngFor="let h of srv.selectedFormHeaders">
           {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>
       </div>
@@ -29,7 +32,7 @@
         <div class="area-mark" [style.left.px]="srv.markLeft">
           表尾区
         </div>
-        <lm-dnd-element [data]="h" boundary='.footer' *ngFor="let h of srv.selectedFormFooters">
+        <lm-dnd-element [data]="h" boundary=".footer" *ngFor="let h of srv.selectedFormFooters">
           {{ h.type === 'input' ? h.value : h.title }}
         </lm-dnd-element>
       </div>
@@ -231,7 +234,6 @@
               </div>
             </ng-container>
           </nz-collapse-panel>
-          <nz-collapse-panel nzHeader="数据合计"> </nz-collapse-panel>
           <nz-collapse-panel nzHeader="表尾字段">
             <ng-container *ngFor="let p of srv.formFooters">
               <div class="collapse-checkbox">
@@ -254,7 +256,18 @@
               </div>
             </ng-container>
           </nz-collapse-panel>
-          <nz-collapse-panel nzHeader="打印图片"> </nz-collapse-panel>
+          <nz-collapse-panel nzHeader="打印图片">
+            <nz-upload
+              nzAction="https://jsonplaceholder.typicode.com/posts/"
+              nzListType="picture-card"
+              [(nzFileList)]="srv.fileList"
+              (nzChange)="srv.upload($event)"
+              [nzShowButton]="srv.fileList.length < 2"
+            >
+              <i nz-icon nzType="plus"></i>
+              <div class="ant-upload-text">上传</div>
+            </nz-upload>
+          </nz-collapse-panel>
         </nz-collapse>
       </nz-tab>
     </nz-tabset>

@@ -128,6 +128,7 @@ export class TplEditService {
   selectedFormFooters = [];
   // 打印图片
   formPic = [];
+  fileList = [];
   selectedFormPic = [];
 
   currentActiveEl;
@@ -167,6 +168,7 @@ export class TplEditService {
     el.selected = false;
     this.selectedFormHeaders = this.selectedFormHeaders.filter(e => e !== el);
     this.selectedFormFooters = this.selectedFormFooters.filter(e => e !== el);
+    this.fileList = this.fileList.filter(e => e !== el);
   }
 
   bold() {
@@ -217,6 +219,10 @@ export class TplEditService {
   }
   formFooterChange() {
     this.selectedFormFooters = this.formFooters.filter(h => h.selected);
+  }
+
+  upload($event) {
+    console.log($event);
   }
 
   reset() {}

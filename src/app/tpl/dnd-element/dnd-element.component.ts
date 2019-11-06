@@ -36,6 +36,9 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input()
   minHeight = 20;
 
+  @Input()
+  type: 'input' | 'image' = 'input';
+
   _data;
   @Input()
   set data(v) {
@@ -124,10 +127,10 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     Object.assign(v, styleObj);
     if (v.height === undefined) {
-      v.height = 30;
+      v.height = this.type === 'input' ? 30 : 48;
     }
     if (v.width === undefined) {
-      v.width = 100;
+      v.width = this.type === 'input' ? 100 : 48;
     }
     if (v.transform === undefined) {
       v.transform = 'translate3d(5px, 5px, 0px)';
