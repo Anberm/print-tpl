@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { NzResizeEvent } from 'ng-zorro-antd/resizable/ng-zorro-antd-resizable';
 import { TplEditService } from '../tpl-edit.service';
+import { toNumber } from 'ng-zorro-antd';
 
 @Component({
   selector: 'lm-dnd-element',
@@ -81,6 +82,25 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
     this.data.style = this.dndEl.nativeElement.attributes.style.value;
   }
 
+  getTransform(str: string = '') {
+    // translate3d\([\-|0-9][0-9]*px, [\-|0-9][0-9]*px, [\-|0-9][0-9]*px\)
+    const tArray = str.match(/translate3d\([\-|0-9][0-9]*px, [\-|0-9][0-9]*px, [\-|0-9][0-9]*px\)/g);
+    if (tArray.length <= 1) {
+      return tArray.length === 1 ? tArray[0] : '';
+    }
+    const ts = tArray
+      .map(x => x.match(/[\-|0-9][0-9]*px/g))
+      .reduce((x, y): any[] => {
+        return [
+          toNumber(x[0].replace('px', '')) + toNumber(y[0].replace('px', '')),
+          toNumber(x[1].replace('px', '')) + toNumber(y[1].replace('px', '')),
+          toNumber(x[2].replace('px', '')) + toNumber(y[2].replace('px', '')),
+        ];
+      });
+    return `translate3d(${ts[0]}px, ${ts[1]}px, ${ts[2]}px)`;
+    // [[1, 2, 3], [4, 5, 6]].reduce((x, y) => {console.log(x+'---'+y);return [x[0]+y[0],x[1]+y[1],x[2]+y[2]]});
+  }
+
   analyzeStyle(v: any = {}) {
     const styleObj: any = {};
     if (!v.style) {
@@ -102,12 +122,7 @@ export class DndElementComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       if (sy.includes('transform')) {
         const h = sy.split(':')[1];
-        const lIndex = h.lastIndexOf('translate3d');
-        if (lIndex > 0) {
-          styleObj.transform = h.substring(0, lIndex);
-        } else {
-          styleObj.transform = h;
-        }
+        styleObj.transform = this.getTransform(h);
       }
       if (sy.includes('font-size')) {
         const h = sy.split(':')[1];
