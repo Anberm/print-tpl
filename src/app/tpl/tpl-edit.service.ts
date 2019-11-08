@@ -251,6 +251,10 @@ export class TplEditService {
   formHeaderChange() {
     this.selectedFormHeaders = this.formHeaders.filter(h => h.selected);
   }
+
+  formBodySort() {
+    this.formBodys.sort((x, y) => x.order - y.order);
+  }
   formBodyChange() {
     this.selectedFormBodys = this.formBodys.filter(h => h.selected);
   }

@@ -12,6 +12,10 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {}
   drop(event: CdkDragDrop<string[]>) {
+    const pOrder = this.srv.selectedFormBodys[event.previousIndex].order;
+    this.srv.selectedFormBodys[event.previousIndex].order = this.srv.selectedFormBodys[event.currentIndex].order;
+    this.srv.selectedFormBodys[event.currentIndex].order = pOrder;
     moveItemInArray(this.srv.selectedFormBodys, event.previousIndex, event.currentIndex);
+    this.srv.formBodySort();
   }
 }
