@@ -19,5 +19,7 @@ export class ToolBarComponent {
       this.printSrv.print(this.tplPrint.nativeElement.innerHTML);
     }, 100);
   }
-  save($event) {}
+  save($event) {
+    this.srv.save();
+  }
 }

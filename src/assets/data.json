@@ -125,7 +125,7 @@
       "order": 10
     }
   ],
-  "formCount": [
+  "formCounts": [
     {
       "title": "小计合计",
       "selected": false,
@@ -195,8 +195,13 @@
       "value": ""
     }
   ],
-  "formPic": {
-    "pic1": "",
-    "pic2": ""
-  }
+  "formPic": [
+    {
+      "uid": -1,
+      "name": "xxx.png",
+      "status": "done",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8BAMAAADI0sRBAAAAElBMVEX////y9Pnu8Pf4+vz7/P73+PuBf9JqAAAA4ElEQVQ4y+3RQRLBUAyA4VI9QHjdYxyguUE74wAY9z8L4Rn9RbKxle3nT19Gs0+n2TbJLP/8A3dyTXglIkPMizsXyjjj6c49tJWRLGCVktStPSb+ttrv8fITYwsq2/ae8WPGFzdHfvk5vbEflToXMmOR9TdWsI9TVrCPU1ayi1NWx4xT1g8+uBi8GxA77hE7loLYsYyIHW8QO5YTYsd1vUZcEDuWAbFjO/4ccF3fRVxfN8Vsx68StuO7iOt6TbhgPbkeP0XM48nv9W3CPN6z/fMx83gyjyfjeM84vpvxPp0bGwxPm+1Zm3AAAAAASUVORK5CYII=",
+      "value": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8BAMAAADI0sRBAAAAElBMVEX////y9Pnu8Pf4+vz7/P73+PuBf9JqAAAA4ElEQVQ4y+3RQRLBUAyA4VI9QHjdYxyguUE74wAY9z8L4Rn9RbKxle3nT19Gs0+n2TbJLP/8A3dyTXglIkPMizsXyjjj6c49tJWRLGCVktStPSb+ttrv8fITYwsq2/ae8WPGFzdHfvk5vbEflToXMmOR9TdWsI9TVrCPU1ayi1NWx4xT1g8+uBi8GxA77hE7loLYsYyIHW8QO5YTYsd1vUZcEDuWAbFjO/4ccF3fRVxfN8Vsx68StuO7iOt6TbhgPbkeP0XM48nv9W3CPN6z/fMx83gyjyfjeM84vpvxPp0bGwxPm+1Zm3AAAAAASUVORK5CYII="
+    }
+  ]
 }

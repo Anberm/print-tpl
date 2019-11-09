@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { mmToPx } from './dpi.util';
-export interface TplElement {
-  title: string;
-  value?: any;
-  style: string;
-}
+import { TplElement } from './interface';
+
 @Injectable({
   providedIn: 'root',
 })

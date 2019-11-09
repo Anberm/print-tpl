@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { TplEditService } from '../tpl-edit.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
@@ -8,6 +8,10 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./editor.component.less'],
 })
 export class EditorComponent implements OnInit {
+  @Input() uploadUrl: string = 'https://jsonplaceholder.typicode.com/posts/';
+  @Input() customBaseTpl: TemplateRef<any>;
+  @Input() customDataTpl: TemplateRef<any>;
+
   constructor(public srv: TplEditService) {}
 
   ngOnInit() {}

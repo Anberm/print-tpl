@@ -10,13 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
-import { TplEditComponent } from './tpl-edit/tpl-edit.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TplModule } from './tpl/tpl.module';
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, TplEditComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

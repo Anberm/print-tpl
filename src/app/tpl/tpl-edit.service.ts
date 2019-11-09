@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { mmToPx } from './dpi.util';
-import { TplElement } from './tpl-print.service';
+import { Subject } from 'rxjs';
+import { TplElement, TplData } from './interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TplEditService {
+  private tplDataSource$ = new Subject();
+  public get tplData() {
+    return this.tplDataSource$.asObservable();
+  }
+
   // 打印对象
   printObjs = [
     {
@@ -101,7 +107,7 @@ export class TplEditService {
     },
     {
       name: '公司名称',
-      value: 'company name',
+      value: 'companyName',
     },
   ];
   paperHeader = this.paperHeaders[0];
@@ -113,11 +119,11 @@ export class TplEditService {
     },
     {
       name: '第1页',
-      value: 'one',
+      value: 'One',
     },
     {
       name: '第1页,共n页',
-      value: 'one and count',
+      value: 'OneN',
     },
   ];
   paperFooter = this.paperFooters[0];
@@ -138,15 +144,13 @@ export class TplEditService {
   formBodys = [];
   selectedFormBodys = [];
   // 数据合计
-  formCount = [];
-  selectedFormCount = [];
+  formCounts = [];
+  selectedFormCounts = [];
   // 表尾字段
   formFooters = [];
   selectedFormFooters = [];
   // 打印图片
   formPic = [];
-  fileList = [];
-  selectedFormPic = [];
 
   currentActiveEl;
   fontSize = 13;
@@ -156,11 +160,11 @@ export class TplEditService {
 
   constructor(private http: HttpClient) {
     this.http.get('./assets/data.json').subscribe((x: any) => {
-      this.formHeaders = x.formHeaders;
-      this.formBodys = x.formBodys;
-      this.formCount = x.formCount;
-      this.formFooters = x.formFooters;
-      this.formPic = x.formPic;
+      this.formHeaders = x.formHeaders || [];
+      this.formBodys = x.formBodys || [];
+      this.formCounts = x.formCounts || [];
+      this.formFooters = x.formFooters || [];
+      this.formPic = x.formPic || [];
       this.initSelected();
     });
   }
@@ -185,7 +189,7 @@ export class TplEditService {
     el.selected = false;
     this.selectedFormHeaders = this.selectedFormHeaders.filter(e => e !== el);
     this.selectedFormFooters = this.selectedFormFooters.filter(e => e !== el);
-    this.fileList = this.fileList.filter(e => e !== el);
+    this.formPic = this.formPic.filter(e => e !== el);
   }
 
   bold() {
@@ -258,6 +262,9 @@ export class TplEditService {
   formBodyChange() {
     this.selectedFormBodys = this.formBodys.filter(h => h.selected);
   }
+  formCountChange() {
+    this.selectedFormCounts = this.formCounts.filter(h => h.selected);
+  }
   formFooterChange() {
     this.selectedFormFooters = this.formFooters.filter(h => h.selected);
   }
@@ -285,7 +292,7 @@ export class TplEditService {
       headerHeight: this.headerHeight,
       footerHeight: this.footerHeight,
       fixedFooter: this.fixedFooter,
-      formPics: this.fileList.map(x => {
+      formPics: this.formPic.map(x => {
         return {
           title: '',
           value: x.thumbUrl,
@@ -315,5 +322,39 @@ export class TplEditService {
       }),
     };
     return pObj;
+  }
+
+  private getTplData() {
+    const tplData: TplData = {
+      printObj: this.printObj,
+      tplName: this.printName,
+      paperType: this.paper,
+      paperWidth: this.paperWidthPx,
+      paperHeight: this.paperHeightPx,
+      padding: this.padding,
+      headerHeight: this.headerHeight,
+      footerHeight: this.footerHeight,
+      paperHeaderText: this.paperHeader.value ? this.paperHeader.name : '',
+      paperFooterText: this.paperFooter.value ? this.paperFooter.name : '',
+      isContinuousPrinting: this.isContinuousPrinting,
+      paginalHeader: this.paginalHeader,
+      paginalFooter: this.paginalFooter,
+      fixedFooter: this.fixedFooter,
+      data: {
+        formHeaders: this.formHeaders,
+        selectedFormHeaders: this.selectedFormHeaders,
+        formBodys: this.formBodys,
+        selectedFormBodys: this.selectedFormBodys,
+        formCounts: this.formCounts,
+        selectedFormCounts: this.selectedFormCounts,
+        formFooters: this.formFooters,
+        selectedFormFooters: this.selectedFormFooters,
+        formPic: this.formPic,
+      },
+    };
+  }
+
+  save() {
+    this.tplDataSource$.next(this.getTplData());
   }
 }
