@@ -5,56 +5,64 @@
       "selected": true,
       "type": "input",
       "value": "xx订货单",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "地区",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "公司名称",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "客户名称",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "下单时间",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "联系电话",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "地区",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     },
     {
       "title": "地区",
       "selected": false,
       "type": "label",
       "value": "",
-      "style": ""
+      "style": "",
+      "area": "header"
     }
   ],
   "formBodys": [
@@ -62,67 +70,78 @@
       "title": "商品编号",
       "selected": false,
       "disabled": false,
-      "order": 0
+      "order": 0,
+      "area": "body"
     },
     {
       "title": "商品名称",
       "selected": true,
       "disabled": true,
-      "order": 1
+      "order": 1,
+      "area": "body"
     },
     {
       "title": "单价",
       "selected": true,
       "disabled": false,
-      "order": 2
+      "order": 2,
+      "area": "body"
     },
     {
       "title": "单位",
       "selected": true,
       "disabled": false,
-      "order": 3
+      "order": 3,
+      "area": "body"
     },
     {
       "title": "数量",
       "selected": true,
       "disabled": false,
-      "order": 4
+      "order": 4,
+      "area": "body"
     },
     {
       "title": "已发货数量",
       "selected": true,
       "disabled": false,
-      "order": 5
+      "order": 5,
+      "area": "body"
     },
     {
       "title": "仓库名",
       "selected": true,
       "disabled": false,
-      "order": 6
+      "order": 6,
+      "area": "body"
     },
     {
       "title": "小计",
       "selected": true,
       "disabled": false,
-      "order": 7
+      "order": 7,
+      "area": "body"
     },
     {
       "title": "商品规格",
       "selected": false,
       "disabled": false,
-      "order": 8
+      "order": 8,
+      "area": "body"
     },
     {
       "title": "是否赠品",
       "selected": false,
       "disabled": false,
-      "order": 9
+      "order": 9,
+      "area": "body"
     },
     {
       "title": "商品分类",
       "selected": true,
       "disabled": false,
-      "order": 10
+      "order": 10,
+      "area": "body"
     }
   ],
   "formCounts": [
@@ -130,13 +149,15 @@
       "title": "小计合计",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "count"
     },
     {
       "title": "数量合计",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "count"
     }
   ],
   "formFooters": [
@@ -144,55 +165,64 @@
       "title": "备注",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "优惠金额",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "操作员",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "特批价",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "操作时间",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "配送方式",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "交货日期",
       "selected": false,
       "type": "label",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "自定义文本",
       "selected": false,
       "type": "input",
-      "value": ""
+      "value": "",
+      "area": "footer"
     },
     {
       "title": "自定义文本",
       "selected": false,
       "type": "input",
-      "value": ""
+      "value": "",
+      "area": "footer"
     }
   ],
   "formPic": [

@@ -47,6 +47,9 @@
       </div>
     </div>
     <div class="right">
+      <button *ngIf="srv.isDesign" nz-button class="m-hsm" nzSize="small" nzType="default" (click)="addField($event)">
+        添加数据源
+      </button>
       <button nz-button class="m-hsm" nzSize="small" nzType="default" (click)="preview($event)">
         打印预览
       </button>
@@ -59,3 +62,42 @@
 <div class="tpl-print-temp" #tplPrint>
   <lm-print-frame></lm-print-frame>
 </div>
+
+<ng-template #fieldTpl>
+  <form nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">区域</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-select [(ngModel)]="fieldObj.area" [ngModelOptions]="{ standalone: true }">
+          <nz-option *ngFor="let p of areas" [nzValue]="p.value" [nzLabel]="p.title"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">标题</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input [(ngModel)]="fieldObj.title" [ngModelOptions]="{ standalone: true }" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">绑定字段</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input [(ngModel)]="fieldObj.field" [ngModelOptions]="{ standalone: true }" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">类型</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-select [(ngModel)]="fieldObj.type" [ngModelOptions]="{ standalone: true }">
+          <nz-option *ngFor="let p of types" [nzValue]="p.value" [nzLabel]="p.title"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item *ngIf="fieldObj.type === 'input'">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">输入值</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input [(ngModel)]="fieldObj.value" [ngModelOptions]="{ standalone: true }" />
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</ng-template>

@@ -3,11 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { mmToPx } from './dpi.util';
 import { Subject } from 'rxjs';
 import { TplElement, TplData } from './interface';
+import { NzModalService } from 'ng-zorro-antd';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TplEditService {
+  private _isDesign = true;
+  get isDesign() {
+    return this._isDesign;
+  }
+  set isDesign(v) {
+    this._isDesign = v;
+  }
+
   private tplDataSource$ = new Subject();
   public get tplData() {
     return this.tplDataSource$.asObservable();
@@ -158,7 +167,7 @@ export class TplEditService {
   fontStyle: 'normal' | 'italic' = 'normal';
   textDecoration: 'underline' | 'none' = 'none';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private modalSrv: NzModalService) {
     this.http.get('./assets/data.json').subscribe((x: any) => {
       this.formHeaders = x.formHeaders || [];
       this.formBodys = x.formBodys || [];
@@ -277,7 +286,7 @@ export class TplEditService {
   }
 
   upload($event) {
-    console.log($event);
+    // console.log($event);
   }
 
   reset() {}
@@ -292,6 +301,9 @@ export class TplEditService {
       headerHeight: this.headerHeight,
       footerHeight: this.footerHeight,
       fixedFooter: this.fixedFooter,
+      paginalHeader: this.paginalHeader,
+      paginalFooter: this.paginalFooter,
+      isContinuousPrinting: this.isContinuousPrinting,
       formPics: this.formPic.map(x => {
         return {
           title: '',
@@ -349,12 +361,59 @@ export class TplEditService {
         selectedFormCounts: this.selectedFormCounts,
         formFooters: this.formFooters,
         selectedFormFooters: this.selectedFormFooters,
-        formPic: this.formPic,
+        formPic: this.formPic.map(x => {
+          return {
+            title: '',
+            value: x.thumbUrl || x.url || x.value,
+            style: x.style,
+          } as TplElement;
+        }),
       },
     };
   }
 
   save() {
     this.tplDataSource$.next(this.getTplData());
+  }
+
+  addField(e: TplElement) {
+    switch (e.area) {
+      case 'header':
+        this.formHeaders = [...this.formHeaders, e];
+        break;
+      case 'body':
+        this.formBodys = [...this.formBodys, e];
+        break;
+      case 'count':
+        this.formCounts = [...this.formCounts, e];
+        break;
+      case 'footer':
+        this.formFooters = [...this.formFooters, e];
+        break;
+      default:
+        break;
+    }
+  }
+  delField(e: TplElement) {
+    switch (e.area) {
+      case 'header':
+        this.formHeaders = this.formHeaders.filter(f => f !== e);
+        this.formHeaderChange();
+        break;
+      case 'body':
+        this.formBodys = this.formBodys.filter(f => f !== e);
+        this.formBodyChange();
+        break;
+      case 'count':
+        this.formCounts = this.formCounts.filter(f => f !== e);
+        this.formCountChange();
+        break;
+      case 'footer':
+        this.formFooters = this.formFooters.filter(f => f !== e);
+        this.formFooterChange();
+        break;
+      default:
+        break;
+    }
   }
 }

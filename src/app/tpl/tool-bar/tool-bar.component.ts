@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, TemplateRef } from '@angular/core';
 import { TplEditService } from '../tpl-edit.service';
 import { TplPrintService } from '../tpl-print.service';
+import { NzModalService } from 'ng-zorro-antd';
+import { TplElement } from '../interface';
 
 @Component({
   selector: 'lm-tool-bar',
@@ -9,7 +11,45 @@ import { TplPrintService } from '../tpl-print.service';
 })
 export class ToolBarComponent {
   @ViewChild('tplPrint', { static: false }) tplPrint: ElementRef;
-  constructor(public srv: TplEditService, private printSrv: TplPrintService) {}
+
+  _fieldObj: TplElement = {
+    title: '',
+    value: '',
+    style: '',
+    selected: false,
+    type: 'label',
+  };
+  fieldObj = Object.assign({}, this._fieldObj);
+  types = [
+    {
+      title: '标签',
+      value: 'label',
+    },
+    {
+      title: '输入',
+      value: 'input',
+    },
+  ];
+  areas = [
+    {
+      title: '表头',
+      value: 'header',
+    },
+    {
+      title: '表体',
+      value: 'header',
+    },
+    {
+      title: '合计',
+      value: 'count',
+    },
+    {
+      title: '表尾',
+      value: 'footer',
+    },
+  ];
+  @ViewChild('fieldTpl', { static: false }) fieldTpl: TemplateRef<any>;
+  constructor(public srv: TplEditService, private printSrv: TplPrintService, private modalSrv: NzModalService) {}
 
   preview($event) {
     console.log(this.tplPrint);
@@ -21,5 +61,23 @@ export class ToolBarComponent {
   }
   save($event) {
     this.srv.save();
+  }
+
+  reset() {
+    this.fieldObj = Object.assign({}, this._fieldObj);
+  }
+
+  addField() {
+    this.modalSrv.create({
+      nzTitle: '新增数据源字段',
+      nzContent: this.fieldTpl,
+      nzOnCancel: e => {
+        this.reset();
+      },
+      nzOnOk: e => {
+        this.srv.addField(this.fieldObj);
+        this.reset();
+      },
+    });
   }
 }

@@ -39,4 +39,9 @@ export interface TplElement {
   title: string;
   value?: any;
   style: string;
+  selected?: boolean;
+  type?: 'input' | 'label';
+  order?: number;
+  field?: string;
+  area?: 'header' | 'body' | 'count' | 'footer';
 }

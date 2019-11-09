@@ -68,7 +68,7 @@
 
 <ng-template #baseTpl>
   <form nz-form nzLayout="vertical">
-    <nz-form-item nzGutter="8">
+    <nz-form-item nzGutter="8" *ngIf="!srv.isDesign">
       <nz-form-label nzRequired>打印对象</nz-form-label>
       <nz-form-control>
         <nz-select [(ngModel)]="srv.printObj" [ngModelOptions]="{ standalone: true }">
@@ -76,7 +76,7 @@
         </nz-select>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
+    <nz-form-item *ngIf="!srv.isDesign">
       <nz-form-label nzRequired>模板名称</nz-form-label>
       <nz-form-control>
         <input
@@ -267,6 +267,11 @@
             [ngModelOptions]="{ standalone: true }"
             >{{ p.title }}</label
           >
+          <div *ngIf="srv.isDesign" class="field-del">
+            <button nz-button nzType="primary" nzShape="circle" nzSize="small" (click)="srv.delField(p)">
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </button>
+          </div>
           <input *ngIf="p.type === 'input'" nz-input [(ngModel)]="p.value" [ngModelOptions]="{ standalone: true }" />
         </div>
       </ng-container>
@@ -282,6 +287,11 @@
             [ngModelOptions]="{ standalone: true }"
             >{{ p.title }}</label
           >
+          <div *ngIf="srv.isDesign" class="field-del">
+              <button nz-button nzType="primary" nzShape="circle" nzSize="small" (click)="srv.delField(p)">
+                <i nz-icon nzType="delete" nzTheme="outline"></i>
+              </button>
+            </div>
         </div>
       </ng-container>
     </nz-collapse-panel>
@@ -296,6 +306,11 @@
             [ngModelOptions]="{ standalone: true }"
             >{{ p.title }}</label
           >
+          <div *ngIf="srv.isDesign" class="field-del">
+              <button nz-button nzType="primary" nzShape="circle" nzSize="small" (click)="srv.delField(p)">
+                <i nz-icon nzType="delete" nzTheme="outline"></i>
+              </button>
+            </div>
         </div>
       </ng-container>
     </nz-collapse-panel>
@@ -311,6 +326,11 @@
             [ngModelOptions]="{ standalone: true }"
             >{{ p.title }}</label
           >
+          <div *ngIf="srv.isDesign" class="field-del">
+              <button nz-button nzType="primary" nzShape="circle" nzSize="small" (click)="srv.delField(p)">
+                <i nz-icon nzType="delete" nzTheme="outline"></i>
+              </button>
+            </div>
           <input
             *ngIf="p.type === 'input'"
             nz-input
